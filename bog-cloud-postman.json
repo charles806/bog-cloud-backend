@@ -1,0 +1,1887 @@
+{
+  "info": {
+    "name": "BOG Cloud API",
+    "description": "Complete API collection for BOG Cloud",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"Password123!\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"accountType\": \"trial\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"Password123!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Me",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/me",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "me"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/logout",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "logout"]
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{base_url}}/api/v1/auth/refresh",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "auth", "refresh"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Profile",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/me",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "me"]
+            }
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Jane\",\n  \"lastName\": \"Smith\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/me",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "me"]
+            }
+          }
+        },
+        {
+          "name": "Change Password",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"Password123!\",\n  \"newPassword\": \"NewPassword456!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/me/password",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "me", "password"]
+            }
+          }
+        },
+        {
+          "name": "Get Devices",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/devices",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "devices"]
+            }
+          }
+        },
+        {
+          "name": "Revoke All Devices",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/devices/all",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "devices", "all"]
+            }
+          }
+        },
+        {
+          "name": "Delete Account",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"Password123!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/me",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "me"]
+            }
+          }
+        },
+        {
+          "name": "Get Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/users/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "users", "stats"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Password Manager",
+      "item": [
+        {
+          "name": "Create Folder",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Work\",\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/folders",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "folders"]
+            }
+          }
+        },
+        {
+          "name": "Get Folders",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/folders",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "folders"]
+            }
+          }
+        },
+        {
+          "name": "Save Password",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteName\": \"Google\",\n  \"username\": \"john@gmail.com\",\n  \"password\": \"secret123\",\n  \"url\": \"https://google.com\",\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/entries",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "entries"]
+            }
+          }
+        },
+        {
+          "name": "Get All Passwords",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/entries",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "entries"]
+            }
+          }
+        },
+        {
+          "name": "Get One Password",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/entries/{{entryId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "entries", "{{entryId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Password",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteName\": \"Google Updated\",\n  \"password\": \"newSecret456\",\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/entries/{{entryId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "entries", "{{entryId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Password",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/entries/{{entryId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "entries", "{{entryId}}"]
+            }
+          }
+        },
+        {
+          "name": "Move Entry",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"folderId\": \"FOLDER_ID\",\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/entries/{{entryId}}/move",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "entries", "{{entryId}}", "move"]
+            }
+          }
+        },
+        {
+          "name": "Toggle Favorite",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/entries/{{entryId}}/favorite",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "entries", "{{entryId}}", "favorite"]
+            }
+          }
+        },
+        {
+          "name": "Get Favorites",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/favorites",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "favorites"]
+            }
+          }
+        },
+        {
+          "name": "Search Passwords",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/search?q=google",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "search"],
+              "query": [{ "key": "q", "value": "google" }]
+            }
+          }
+        },
+        {
+          "name": "Generate Password",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/generate?length=24&special=true",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "generate"],
+              "query": [
+                { "key": "length", "value": "24" },
+                { "key": "special", "value": "true" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Check Password Strength",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"MyPassword123!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/check-strength",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "check-strength"]
+            }
+          }
+        },
+        {
+          "name": "Export Passwords (JSON)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/export?format=json",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "export"],
+              "query": [{ "key": "format", "value": "json" }]
+            }
+          }
+        },
+        {
+          "name": "Export Passwords (CSV)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/export?format=csv",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "export"],
+              "query": [{ "key": "format", "value": "csv" }]
+            }
+          }
+        },
+        {
+          "name": "Import Passwords",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"format\": \"json\",\n  \"data\": [\n    {\"siteName\": \"Test1\", \"username\": \"test1\", \"password\": \"pass1\"},\n    {\"siteName\": \"Test2\", \"username\": \"test2\", \"password\": \"pass2\"}\n  ],\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/import",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "import"]
+            }
+          }
+        },
+        {
+          "name": "Get Password History",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/entries/{{entryId}}/history",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "entries", "{{entryId}}", "history"]
+            }
+          }
+        },
+        {
+          "name": "Bulk Delete",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entryIds\": [\"id1\", \"id2\", \"id3\"],\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/bulk/delete",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "bulk", "delete"]
+            }
+          }
+        },
+        {
+          "name": "Bulk Move",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entryIds\": [\"id1\", \"id2\"],\n  \"folderId\": \"folderId\",\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/vault/bulk/move",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "vault", "bulk", "move"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cloud Storage",
+      "item": [
+        {
+          "name": "Upload File",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                { "key": "file", "type": "file", "src": [] },
+                { "key": "folderId", "type": "text", "value": "", "disabled": true },
+                { "key": "deviceId", "type": "text", "value": "postman" }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/upload",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "upload"]
+            }
+          }
+        },
+        {
+          "name": "Get All Files",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/files",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "files"]
+            }
+          }
+        },
+        {
+          "name": "Get Files by Folder",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/files?folderId={{folderId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "files"],
+              "query": [{ "key": "folderId", "value": "{{folderId}}" }]
+            }
+          }
+        },
+        {
+          "name": "Download File",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/files/{{fileId}}/download",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "files", "{{fileId}}", "download"]
+            }
+          }
+        },
+        {
+          "name": "Preview File",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/files/{{fileId}}/preview",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "files", "{{fileId}}", "preview"]
+            }
+          }
+        },
+        {
+          "name": "Delete File",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "body": { "mode": "raw", "raw": "{\n  \"deviceId\": \"postman\"\n}" },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/files/{{fileId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "files", "{{fileId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create Folder",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Photos\",\n  \"parentFolderId\": null,\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/folders",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "folders"]
+            }
+          }
+        },
+        {
+          "name": "Get Folders",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/folders",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "folders"]
+            }
+          }
+        },
+        {
+          "name": "Delete Folder",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "body": { "mode": "raw", "raw": "{\n  \"deviceId\": \"postman\"\n}" },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/folders/{{folderId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "folders", "{{folderId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Storage Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "stats"]
+            }
+          }
+        },
+        {
+          "name": "Generate Share Link",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"expiryMinutes\": 60,\n  \"password\": null\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/share/{{fileId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "share", "{{fileId}}"]
+            }
+          }
+        },
+        {
+          "name": "Access Shared File",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/share/{{shareToken}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "share", "{{shareToken}}"]
+            }
+          }
+        },
+        {
+          "name": "Search Files",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/search?q=image",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "search"],
+              "query": [{ "key": "q", "value": "image" }]
+            }
+          }
+        },
+        {
+          "name": "Bulk Delete Files",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileIds\": [\"FILE_ID_1\", \"FILE_ID_2\"],\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/bulk/delete",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "bulk", "delete"]
+            }
+          }
+        },
+        {
+          "name": "Bulk Move Files",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fileIds\": [\"FILE_ID_1\", \"FILE_ID_2\"],\n  \"folderId\": \"FOLDER_ID\",\n  \"deviceId\": \"postman\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/bulk/move",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "bulk", "move"]
+            }
+          }
+        },
+        {
+          "name": "Update File Tags",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tags\": [\"work\", \"important\"]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/files/{{fileId}}/tags",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "files", "{{fileId}}", "tags"]
+            }
+          }
+        },
+        {
+          "name": "Get File Versions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/files/{{fileId}}/versions",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "files", "{{fileId}}", "versions"]
+            }
+          }
+        },
+        {
+          "name": "Restore File Version",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"versionId\": \"VERSION_ID\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/files/{{fileId}}/restore",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "files", "{{fileId}}", "restore"]
+            }
+          }
+        },
+        {
+          "name": "Storage Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/storage/analytics",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "storage", "analytics"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cross-Device Sync",
+      "item": [
+        {
+          "name": "Get Sync Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/sync/status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "sync", "status"]
+            }
+          }
+        },
+        {
+          "name": "Push Changes",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"password_created\",\n  \"resourceType\": \"password\",\n  \"resourceId\": \"123\",\n  \"deviceId\": \"postman\",\n  \"resourceData\": {\n    \"siteName\": \"Test Site\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/sync/push",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "sync", "push"]
+            }
+          }
+        },
+        {
+          "name": "Pull Changes",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/sync/pull?deviceId=postman&lastSyncTime=2024-01-01T00:00:00.000Z",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "sync", "pull"],
+              "query": [
+                { "key": "deviceId", "value": "postman" },
+                { "key": "lastSyncTime", "value": "2024-01-01T00:00:00.000Z" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Clear Synced Changes",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/sync/cleanup?days=7",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "sync", "cleanup"],
+              "query": [{ "key": "days", "value": "7" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Email & Password Reset",
+      "item": [
+        {
+          "name": "Send Verification Email",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/email/send-verification",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "email", "send-verification"]
+            }
+          }
+        },
+        {
+          "name": "Verify Email",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/email/verify-email?token={{token}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "email", "verify-email"],
+              "query": [{ "key": "token", "value": "{{token}}" }]
+            }
+          }
+        },
+        {
+          "name": "Resend Verification",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/email/resend-verification",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "email", "resend-verification"]
+            }
+          }
+        },
+        {
+          "name": "Request OTP",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/password/forgot-password",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "password", "forgot-password"]
+            }
+          }
+        },
+        {
+          "name": "Verify OTP",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"otp\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/password/verify-otp",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "password", "verify-otp"]
+            }
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resetToken\": \"your-reset-token\",\n  \"newPassword\": \"NewPassword123!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/password/reset-password",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "password", "reset-password"]
+            }
+          }
+        },
+        {
+          "name": "Resend OTP",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/password/resend-otp",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "password", "resend-otp"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "DevCloud - API Keys",
+      "item": [
+        {
+          "name": "Create Project",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My App\",\n  \"description\": \"My first app\",\n  \"environment\": \"development\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/projects",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "projects"]
+            }
+          }
+        },
+        {
+          "name": "Get Projects",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/projects",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "projects"]
+            }
+          }
+        },
+        {
+          "name": "Get Project",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/projects/{{projectId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "projects", "{{projectId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Project",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Updated App\",\n  \"environment\": \"production\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/projects/{{projectId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "projects", "{{projectId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Project",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/projects/{{projectId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "projects", "{{projectId}}"]
+            }
+          }
+        },
+        {
+          "name": "Create API Key",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": \"PROJECT_ID\",\n  \"name\": \"Stripe Secret\",\n  \"value\": \"sk_live_abc123\",\n  \"environment\": \"production\",\n  \"type\": \"api_key\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/keys",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "keys"]
+            }
+          }
+        },
+        {
+          "name": "Get API Keys",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/keys?projectId={{projectId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "keys"],
+              "query": [{ "key": "projectId", "value": "{{projectId}}" }]
+            }
+          }
+        },
+        {
+          "name": "Get API Key",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/keys/{{keyId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "keys", "{{keyId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update API Key",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Updated Stripe Key\",\n  \"environment\": \"staging\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/keys/{{keyId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "keys", "{{keyId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete API Key",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/keys/{{keyId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "keys", "{{keyId}}"]
+            }
+          }
+        },
+        {
+          "name": "Rotate API Key",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/devcloud/keys/{{keyId}}/rotate",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "devcloud", "keys", "{{keyId}}", "rotate"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "DevCloud - Deployment",
+      "item": [
+        {
+          "name": "Create Deployment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": \"PROJECT_ID\",\n  \"appName\": \"my-app\",\n  \"gitRepo\": \"https://github.com/user/my-app\",\n  \"gitBranch\": \"main\",\n  \"environment\": \"production\",\n  \"runtime\": \"nodejs\",\n  \"port\": 3000,\n  \"customDomain\": \"myapp.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/deploy",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "deploy"]
+            }
+          }
+        },
+        {
+          "name": "Deploy App",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/deploy/{{deploymentId}}/deploy",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "deploy", "{{deploymentId}}", "deploy"]
+            }
+          }
+        },
+        {
+          "name": "Get Deployments",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/deploy?projectId={{projectId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "deploy"],
+              "query": [{ "key": "projectId", "value": "{{projectId}}" }]
+            }
+          }
+        },
+        {
+          "name": "Get Deployment",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/deploy/{{deploymentId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "deploy", "{{deploymentId}}"]
+            }
+          }
+        },
+        {
+          "name": "Rollback Deployment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/deploy/{{deploymentId}}/rollback",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "deploy", "{{deploymentId}}", "rollback"]
+            }
+          }
+        },
+        {
+          "name": "Get Deployment Logs",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/deploy/{{deploymentId}}/logs",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "deploy", "{{deploymentId}}", "logs"]
+            }
+          }
+        },
+        {
+          "name": "Restart App",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/deploy/{{deploymentId}}/restart",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "deploy", "{{deploymentId}}", "restart"]
+            }
+          }
+        },
+        {
+          "name": "Stop App",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/deploy/{{deploymentId}}/stop",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "deploy", "{{deploymentId}}", "stop"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Browser Extension",
+      "item": [
+        {
+          "name": "Check Site Has Credentials",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/extension/check?url=https://google.com",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "extension", "check"],
+              "query": [{ "key": "url", "value": "https://google.com" }]
+            }
+          }
+        },
+        {
+          "name": "Get Credentials for Site",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/extension/credentials?url=https://google.com",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "extension", "credentials"],
+              "query": [{ "key": "url", "value": "https://google.com" }]
+            }
+          }
+        },
+        {
+          "name": "Save Credentials from Extension",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"siteName\": \"Google\",\n  \"username\": \"user@gmail.com\",\n  \"password\": \"password123\",\n  \"url\": \"https://google.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/extension/credentials",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "extension", "credentials"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mobile App",
+      "item": [
+        {
+          "name": "Mobile Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"Password123!\",\n  \"deviceId\": \"iphone15\",\n  \"deviceName\": \"iPhone 15 Pro\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/mobile/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mobile", "login"]
+            }
+          }
+        },
+        {
+          "name": "Mobile Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/mobile/dashboard",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mobile", "dashboard"]
+            }
+          }
+        },
+        {
+          "name": "Mobile Vault",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/mobile/vault?limit=20&offset=0&search=google",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mobile", "vault"],
+              "query": [
+                { "key": "limit", "value": "20" },
+                { "key": "offset", "value": "0" },
+                { "key": "search", "value": "google" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Mobile Files",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/mobile/files?limit=20&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mobile", "files"],
+              "query": [
+                { "key": "limit", "value": "20" },
+                { "key": "offset", "value": "0" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Register Push Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pushToken\": \"fcm_token_123456\",\n  \"deviceType\": \"ios\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/mobile/push-token",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mobile", "push-token"]
+            }
+          }
+        },
+        {
+          "name": "Mobile Sync",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lastSync\": \"2024-01-15T10:00:00.000Z\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/mobile/sync",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mobile", "sync"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin & Analytics",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "users"]
+            }
+          }
+        },
+        {
+          "name": "Get User Details",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/users/{{userId}}",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "users", "{{userId}}"]
+            }
+          }
+        },
+        {
+          "name": "Admin Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "stats"]
+            }
+          }
+        },
+        {
+          "name": "Send Admin Invitation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/users/{{userId}}/invite-admin",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "users", "{{userId}}", "invite-admin"]
+            }
+          }
+        },
+        {
+          "name": "Accept Admin Invitation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/invitations/{{token}}/accept",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "invitations", "{{token}}", "accept"]
+            }
+          }
+        },
+        {
+          "name": "Reject Admin Invitation",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/invitations/{{token}}/reject",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "invitations", "{{token}}", "reject"]
+            }
+          }
+        },
+        {
+          "name": "Revoke Admin Invitation",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/invitations/{{invitationId}}/revoke",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "invitations", "{{invitationId}}", "revoke"]
+            }
+          }
+        },
+        {
+          "name": "Get Pending Invitations",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/invitations/pending",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "invitations", "pending"]
+            }
+          }
+        },
+        {
+          "name": "Reset User Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/admin/users/{{userId}}/reset-password",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "admin", "users", "{{userId}}", "reset-password"]
+            }
+          }
+        },
+        {
+          "name": "Dashboard Overview",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/analytics/dashboard",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "analytics", "dashboard"]
+            }
+          }
+        },
+        {
+          "name": "User Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/analytics/users?timeframe=30d",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "analytics", "users"],
+              "query": [{ "key": "timeframe", "value": "30d" }]
+            }
+          }
+        },
+        {
+          "name": "Activity Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/analytics/activity?timeframe=30d",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "analytics", "activity"],
+              "query": [{ "key": "timeframe", "value": "30d" }]
+            }
+          }
+        },
+        {
+          "name": "Storage Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/analytics/storage",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "analytics", "storage"]
+            }
+          }
+        },
+        {
+          "name": "Payment Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/analytics/payments",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "analytics", "payments"]
+            }
+          }
+        },
+        {
+          "name": "Export Report",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/analytics/export?format=json&reportType=overview",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "analytics", "export"],
+              "query": [
+                { "key": "format", "value": "json" },
+                { "key": "reportType", "value": "overview" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "MFA & Audit",
+      "item": [
+        {
+          "name": "Setup MFA",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/mfa/setup",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mfa", "setup"]
+            }
+          }
+        },
+        {
+          "name": "Verify MFA",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/mfa/verify",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mfa", "verify"]
+            }
+          }
+        },
+        {
+          "name": "Disable MFA",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/mfa/disable",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "mfa", "disable"]
+            }
+          }
+        },
+        {
+          "name": "Get Audit Logs",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/audit/logs",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "audit", "logs"]
+            }
+          }
+        },
+        {
+          "name": "Get Audit Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/audit/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "audit", "stats"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Initiate Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan\": \"individual\",\n  \"interval\": \"monthly\",\n  \"amount\": 5000,\n  \"currency\": \"NGN\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/initiate",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "initiate"]
+            }
+          }
+        },
+        {
+          "name": "Verify Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reference\": \"PAY-1234567890-abc123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/verify",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "verify"]
+            }
+          }
+        },
+        {
+          "name": "Get User Payments",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments"]
+            }
+          }
+        },
+        {
+          "name": "Get Payment Stats",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/stats",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "stats"]
+            }
+          }
+        },
+        {
+          "name": "Get Subscription",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/subscription",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "subscription"]
+            }
+          }
+        },
+        {
+          "name": "Cancel Subscription",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Too expensive\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/subscription/cancel",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "subscription", "cancel"]
+            }
+          }
+        },
+        {
+          "name": "Start Free Trial",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"plan\": \"individual\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/trial/start",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "trial", "start"]
+            }
+          }
+        },
+        {
+          "name": "Check Trial Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/trial/status",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "trial", "status"]
+            }
+          }
+        },
+        {
+          "name": "Admin - All Payments",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/admin/all",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "admin", "all"]
+            }
+          }
+        },
+        {
+          "name": "Admin - Payment Analytics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": {
+              "raw": "{{base_url}}/api/v1/payments/admin/analytics",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "payments", "admin", "analytics"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/api/v1/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "health"]
+            }
+          }
+        },
+        {
+          "name": "Ping",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{base_url}}/ping",
+              "host": ["{{base_url}}"],
+              "path": ["ping"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5001",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "entryId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "fileId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "folderId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "shareToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "projectId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "deploymentId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "keyId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "invitationId",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
