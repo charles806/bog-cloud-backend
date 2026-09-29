@@ -1,4 +1,9 @@
 const dotenv = require('dotenv');
+
+// Empty strings block dotenv (it will not override). Treat "" as unset so .env can fill them.
+if (process.env.ENCRYPTION_KEY === '') {
+  delete process.env.ENCRYPTION_KEY;
+}
 dotenv.config();
 
 const requiredEnvVars = [
@@ -9,7 +14,8 @@ const requiredEnvVars = [
   'REFRESH_TOKEN_SECRET',
   'REFRESH_TOKEN_EXPIRES_IN',
   'SALT_ROUNDS',
-  'CORS_ORIGIN'
+  'CORS_ORIGIN',
+  'ENCRYPTION_KEY'
 ];
 
 const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
@@ -18,6 +24,16 @@ if (missingVars.length > 0) {
   console.error(`Missing required environment variables: ${missingVars.join(', ')}`);
   process.exit(1);
 }
+
+if (
+  !process.env.ENCRYPTION_KEY ||
+  process.env.ENCRYPTION_KEY.length !== 64 ||
+  !/^[0-9a-fA-F]+$/.test(process.env.ENCRYPTION_KEY)
+) {
+  console.error('ENCRYPTION_KEY must be a 32-byte hex string (64 chars)');
+  process.exit(1);
+}
+
 module.exports = {
   port: parseInt(process.env.PORT, 10) || 5000,
   nodeEnv: process.env.NODE_ENV || 'development',
