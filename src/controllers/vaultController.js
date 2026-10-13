@@ -29,6 +29,21 @@ const generatePassword = (length = 24, includeSpecial = true) => {
   return password;
 };
 
+/* Return an entry as a plain object with password and notes decrypted, so the
+   owner can read them back (list, reveal, edit). Everything else is untouched. */
+const plainEntry = (entry) => {
+  const obj = entry && typeof entry.toObject === 'function'
+    ? entry.toObject()
+    : Object.assign({}, entry);
+  if (obj.password) {
+    try { obj.password = decrypt(obj.password); } catch (e) {}
+  }
+  if (obj.notes) {
+    try { obj.notes = decrypt(obj.notes); } catch (e) {}
+  }
+  return obj;
+};
+
 // ===================== VAULT ENTRY CRUD =====================
 
 const createEntry = async (req, res) => {
@@ -102,7 +117,7 @@ const getEntries = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Entries retrieved successfully',
-      data: entries
+      data: entries.map(plainEntry)
     });
   } catch (error) {
     console.error('Get entries error:', error);
@@ -126,7 +141,7 @@ const getEntry = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Entry retrieved successfully',
-      data: entry
+      data: plainEntry(entry)
     });
   } catch (error) {
     console.error('Get entry error:', error);
@@ -408,7 +423,7 @@ const getFavorites = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Favorites retrieved',
-      data: entries
+      data: entries.map(plainEntry)
     });
   } catch (error) {
     console.error('Get favorites error:', error);
@@ -463,7 +478,7 @@ const searchEntries = async (req, res) => {
     res.status(200).json({
       success: true,
       message: 'Search results',
-      data: { entries, total, offset, limit }
+      data: { entries: entries.map(plainEntry), total, offset, limit }
     });
   } catch (error) {
     console.error('Search error:', error);
