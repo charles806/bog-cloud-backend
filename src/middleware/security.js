@@ -30,6 +30,8 @@ const setupSecurity = (app) => {
   const staticOrigins = [
     'https://bog-cloud.vercel.app',
     'https://bog-cloud-backend.vercel.app',
+    'https://bogcloud.cv',
+    'https://www.bogcloud.cv',
     'http://localhost:3000',
     'http://localhost:5173',
     'http://localhost:4000',
