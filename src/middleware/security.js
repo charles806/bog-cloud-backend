@@ -61,6 +61,10 @@ const setupSecurity = (app) => {
       return callback(null, true);
     }
 
+    if (/^https:\/\/([a-z0-9-]+\.)?bogcloud\.cv$/i.test(origin)) {
+      return callback(null, true);
+    }
+
     logger.warn(`[CORS] Blocked origin: ${origin}`);
     return callback(new Error(`Not allowed by CORS: ${origin}`));
   };
