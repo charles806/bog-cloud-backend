@@ -43,6 +43,8 @@ const config = {
   // Auth (adjust to your actual keys)
   jwtSecret: required('JWT_SECRET'),
   jwtExpiresIn: optional('JWT_EXPIRES_IN', '7d'),
+  refreshTokenSecret: optional('REFRESH_TOKEN_SECRET', required('JWT_SECRET')),
+  refreshTokenExpiresIn: optional('REFRESH_TOKEN_EXPIRES_IN', '30d'),
 
   // Email
   sendgridApiKey: optional('SENDGRID_API_KEY'),
