@@ -211,7 +211,7 @@ const updateEntry = async (req, res) => {
 const deleteEntry = async (req, res) => {
   try {
     const { id } = req.params;
-    const { deviceId = 'web' } = req.body;
+    const { deviceId = 'web' } = req.body || {};
     const entry = await VaultEntry.findOneAndDelete({ _id: id, userId: req.user._id });
     if (!entry) {
       return res.status(404).json({
@@ -308,7 +308,7 @@ const getFolders = async (req, res) => {
 const deleteFolder = async (req, res) => {
   try {
     const { id } = req.params;
-    const { deviceId = 'web' } = req.body;
+    const { deviceId = 'web' } = req.body || {};
     const folder = await VaultFolder.findOneAndDelete({ _id: id, userId: req.user._id });
     if (!folder) {
       return res.status(404).json({
